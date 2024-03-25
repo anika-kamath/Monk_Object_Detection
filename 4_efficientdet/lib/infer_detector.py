@@ -68,10 +68,14 @@ class Infer():
                 output_image = cv2.imread(img_path)
 
                 for box_id in range(boxes.shape[0]):
-                    pred_prob = float(scores[box_id])
+                    #pred_prob = float(scores[box_id])
+                    pred_prob = scores[box_id].item()
+                    
                     if pred_prob < vis_threshold:
                         break
-                    pred_label = int(labels[box_id])
+                    #pred_label = int(labels[box_id])
+                    pred_label = labels[box_id].item()
+                    
                     xmin, ymin, xmax, ymax = boxes[box_id, :]
                     color = colors[pred_label]
                     cv2.rectangle(output_image, (xmin, ymin), (xmax, ymax), color, 2)
