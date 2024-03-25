@@ -248,7 +248,8 @@ class EfficientDet(nn.Module):
                 m.eval()
 
     def forward(self, inputs):
-        if len(inputs) == 2:
+        #change made here
+        if inputs.shape[0] == 2:
             is_training = True
             img_batch, annotations = inputs
         else:
